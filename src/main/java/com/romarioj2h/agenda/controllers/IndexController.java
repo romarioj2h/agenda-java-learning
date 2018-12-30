@@ -14,8 +14,6 @@ public class IndexController {
  
 	@RequestMapping("/index")
 	public ModelAndView showMessage(HttpSession httpSession) {
-		System.out.println("en el controller");
- 
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("mensaje", mensaje);
 		Usuario usuario = (Usuario) httpSession.getAttribute("usuarioLogueado");

@@ -1,4 +1,4 @@
-package com.romarioj2h.agenda.dao;
+package com.romarioj2h.agenda.dao.mysql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

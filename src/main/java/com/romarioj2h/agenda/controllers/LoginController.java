@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.romarioj2h.agenda.dao.BaseDatosExcepcion;
 import com.romarioj2h.agenda.dao.UsuarioDAO;
 import com.romarioj2h.agenda.models.Usuario;
 
@@ -32,7 +31,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(Usuario usuario, HttpSession httpSession) throws BaseDatosExcepcion {
+	public String login(Usuario usuario, HttpSession httpSession) {
 		Usuario usuarioObj = usuarioDAO.obtenerPorUsuarioContrasena(usuario.getUsuario(), usuario.getContrasena());
 		if (usuarioObj == null) {
 			return "redirect:/login/loginForm";

@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.romarioj2h.agenda.dao.ContactoDAO;
 import com.romarioj2h.agenda.models.Contacto;
-import com.romarioj2h.agenda.dao.BaseDatosExcepcion;
 
 @Controller
 @RequestMapping("/contacto")
@@ -35,7 +34,7 @@ public class ContactoController {
 	public ModelAndView guardar(
 		@Valid Contacto contacto, 
 		BindingResult bindingResult
-	) throws BaseDatosExcepcion {
+	) {
 		if (bindingResult.hasErrors()) {
 			return new ModelAndView("/contacto/nuevo");
 		}
@@ -49,7 +48,7 @@ public class ContactoController {
 	}
 	
 	@RequestMapping("/listado")
-	public ModelAndView listado() throws BaseDatosExcepcion {
+	public ModelAndView listado() {
 		ModelAndView modelAndView = new ModelAndView("/contacto/listado");
 		List<Contacto> contactos = contactoDAO.listado();
 		modelAndView.addObject("contactos", contactos);
@@ -57,16 +56,15 @@ public class ContactoController {
 	}
 	
 	@RequestMapping("/borrar")
-	public String borrar(Contacto contacto) throws BaseDatosExcepcion {
+	public String borrar(Contacto contacto) {
 		contactoDAO.borrar(contacto);
-		
 		return "redirect:listado";
 	}
 	
 	@RequestMapping("/contacto/{id}")
 	public ModelAndView contacto(
 		@PathVariable("id") Integer id
-	) throws BaseDatosExcepcion {
+	) {
 		Contacto contacto = contactoDAO.obtener(id);
 		ModelAndView modelAndView = new ModelAndView("/contacto/contacto");
 		modelAndView.addObject("contacto", contacto);

@@ -1,4 +1,4 @@
-package com.romarioj2h.agenda.dao;
+package com.romarioj2h.agenda.dao.mysql;
 
 public class BaseDatosExcepcion extends Exception {
 
